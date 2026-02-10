@@ -1,32 +1,52 @@
 // constantes
-const juegos = ["god of War", "fifa","battlefield","gtaV"]
+const juegos = ["god of War", "fifa","battlefield","gtaV"];
 const precios =[80, 120, 150, 200];
 
 let dinero = 150;
 let gastado = 0;
 
-let eleccion = parseInt(prompt("Elegir un juego (0-3)"));
-
-if (eleccion >= 0 && eleccion < juegos.length) {
-
-    if (dinero < precios[eleccion]) {
-        alert("Saldo insuficiente");
-    } 
-    else {
-        alert("Compra realizada");
-        dinero -= precios[eleccion];
-        gastado += precios[eleccion];
-        console.log(gastado);
+// FUNCION MOSTRAR JUEGOS
+function mostrarJuegos(){
+    for (let i=0; i < juegos.length; i++){
+        console.log(i + " - " + juegos[i] + " $" + precios[i]);
     }
-
-} else {
-    alert("Opción inválida");
 }
 
-for (let i=0; i < juegos.length; i++){
-    console.log( juegos [i] + "$" + precios [i]);
+// FUNCION ELEGIR JUEGO
+function elegirJuego(){
+    return parseInt(prompt("Elegir juego (0-3)"));
 }
+
+// FUNCION COMPRAR
+function comprarJuego(indice){
+
+    if (indice >= 0 && indice < juegos.length) {
+
+        if (dinero < precios[indice]) {
+            alert("Saldo insuficiente");
+        } 
+        else {
+            alert("Compra realizada");
+            dinero -= precios[indice];
+            gastado += precios[indice];
+            console.log("Gastaste: " + gastado);
+            console.log("Te queda: " + dinero);
+        }
+
+    } else {
+        alert("Opción inválida");
+    }
+}
+
+// EJECUCIÓN
+mostrarJuegos();
+
+let eleccion = elegirJuego();
+
+comprarJuego(eleccion);
+
+confirm("¿Querés comprar otro juego?");
 
 juegos.push("Rocket League");
-console.log(juegos. join(" / "));
+console.log(juegos.join(" / "));
 console.log(juegos.includes("fifa"));
