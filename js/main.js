@@ -1,4 +1,4 @@
-// constantes
+// CONSTANTES
 const juegos = ["god of War", "fifa","battlefield","gtaV"];
 const precios =[80, 120, 150, 200];
 
