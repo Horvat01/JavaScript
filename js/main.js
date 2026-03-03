@@ -54,9 +54,9 @@
 
 // -SEGUNDA ENTREGA-
 const botonesComprar = document.querySelectorAll(".comprar");
-const carritoDiv = document.querySelector(".carrito");
-const contadorCarrito = document.querySelector(".contadorCarrito");
-const botonVaciar = document.querySelector(".vaciarCarrito");
+const carritoDiv = document.querySelector("#carrito");
+const contadorCarrito = document.querySelector("#contadorCarrito");
+const botonVaciar = document.querySelector("#vaciarCarrito");
 
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
@@ -66,9 +66,20 @@ function actualizarCarrito() {
     if (carrito.length === 0) {
         carritoDiv.innerHTML = "<p>El carrito está vacío</p>";
     } else {
-        carrito.forEach(producto => {
+        carrito.forEach((producto, index) => {
             const p = document.createElement("p");
             p.textContent = producto.nombre + " - $" + producto.precio;
+
+            // Botón para eliminar solo este producto
+            const btnEliminar = document.createElement("button");
+            btnEliminar.textContent = "Eliminar";
+            btnEliminar.classList.add("btn", "btn-sm", "btn-danger", "ms-2");
+            btnEliminar.addEventListener("click", () => {
+                carrito.splice(index, 1);
+                actualizarCarrito();
+            });
+
+            p.appendChild(btnEliminar);
             carritoDiv.appendChild(p);
         });
     }
@@ -81,7 +92,7 @@ botonesComprar.forEach(boton => {
     boton.addEventListener("click", () => {
         const producto = {
             nombre: boton.dataset.nombre,
-            precio: boton.dataset.precio
+            precio: Number(boton.dataset.precio)
         };
 
         carrito.push(producto);
@@ -94,4 +105,5 @@ botonVaciar.addEventListener("click", () => {
     actualizarCarrito();
 });
 
+// Inicializa el carrito al cargar la página
 actualizarCarrito();
