@@ -14,7 +14,7 @@
 
     <nav class="navbar navbar-dark bg-dark px-3">
         <span class="navbar-brand mb-0 h1"> GameShop</span>
-        <button class="btn btn-warning" id="verCarrito">
+        <button class="btn btn-success " id="verCarrito">
             Carrito 🛒 (<span id="contadorCarrito">0</span>)
         </button>
     </nav>
@@ -22,6 +22,17 @@
     <section class="container mt-4">
 
         <h1 class="text-center mb-4">Periféricos para PC</h1>
+
+        <!-- CARRITO -->
+        <div class="mt-5  d-flex flex-column align-items-center carritoo">
+            <h3>Carrito</h3>
+            <div id="carrito" class="border p-3 rounded">
+                <p class="text-muted">El carrito está vacío</p>
+            </div>
+            <button class="btn btn-danger mt-3" id="vaciarCarrito">
+                Vaciar carrito
+            </button>
+        </div>
 
         <div class="row " id="contenedorProductos">
 
@@ -218,15 +229,6 @@
             </div>
         </div>
 
-        <!-- CARRITO -->
-        <div class="mt-5">
-            <h3>Carrito</h3>
-            <div id="carrito" class="border p-3 rounded">
-                <p class="text-muted">El carrito está vacío</p>
-            </div>
-            <button class="btn btn-danger mt-3" id="vaciarCarrito">
-                Vaciar carrito
-            </button>
     </section>
 
     <footer class="bg-dark text-light mt-5 pt-4 pb-2">

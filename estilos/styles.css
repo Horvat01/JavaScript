@@ -1,3 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: aliceblue;
+}
 .textos{
     text-align: center;
+}
+
+.carritoo{
+    background-color: rgba(3, 3, 3, 0.096);
+    border: 0.1rem solid black;
+    padding: 1rem;
+    margin: 1rem;
 }
