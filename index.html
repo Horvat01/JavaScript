@@ -1,19 +1,230 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulador de Juegos</title>
-    <script src="./js/main.js" defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="./estilos/styles.css">
 </head>
 
 <body>
-    <h1>Primera Entrega Js</h1>
-    <p>
-        Este simulador permite al usuario comprar videojuegos con un
-        presupuesto inicial.
-    </p>
+
+    <nav class="navbar navbar-dark bg-dark px-3">
+        <span class="navbar-brand mb-0 h1">🖥 TechStore</span>
+        <button class="btn btn-warning" id="verCarrito">
+            Carrito 🛒 (<span id="contadorCarrito">0</span>)
+        </button>
+    </nav>
+
+    <section class="container mt-4">
+
+        <h1 class="text-center mb-4">Periféricos para PC</h1>
+
+        <div class="row " id="contenedorProductos">
+
+            <div class="card m-3" style="width: 18rem;">
+                <img src="./img/mouse.jpg" class="card-img-top" alt="mouse gamer">
+                <div class="card-body">
+                    <h5 class="card-title">Mouse Gamer RGB Pro X</h5>
+                    <p class="card-text">Mouse ergonómico con sensor óptico de alta precisión 16.000 DPI, iluminación
+                        RGB personalizable y 6 botones programables. Ideal para gaming competitivo.</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Sensor óptico 16.000 DPI</li>
+                    <li class="list-group-item">Iluminación RGB</li>
+                    <li class="list-group-item">Cable mallado reforzado</li>
+                </ul>
+                <div class="card-body">
+                    <a href="#" class="card-link">Comprar</a>
+                    <a href="#" class="card-link">Cancelar</a>
+                </div>
+            </div>
+
+            <div class="card m-3" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Teclado Mecánico Switch Blue</h5>
+                    <p class="card-text">Teclado mecánico con switches Blue de respuesta rápida y sonido táctil.
+                        Construcción en aluminio y retroiluminación LED.</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">An item</li>
+                    <li class="list-group-item">A second item</li>
+                    <li class="list-group-item">A third item</li>
+                </ul>
+                <div class="card-body">
+                    <a href="#" class="card-link">Card link</a>
+                    <a href="#" class="card-link">Another link</a>
+                </div>
+            </div>
+
+            <div class="card m-3" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card’s content.</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">An item</li>
+                    <li class="list-group-item">A second item</li>
+                    <li class="list-group-item">A third item</li>
+                </ul>
+                <div class="card-body">
+                    <a href="#" class="card-link">Card link</a>
+                    <a href="#" class="card-link">Another link</a>
+                </div>
+            </div>
+
+            <div class="card m-3" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card’s content.</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">An item</li>
+                    <li class="list-group-item">A second item</li>
+                    <li class="list-group-item">A third item</li>
+                </ul>
+                <div class="card-body">
+                    <a href="#" class="card-link">Card link</a>
+                    <a href="#" class="card-link">Another link</a>
+                </div>
+            </div>
+
+            <div class="card m-3" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card’s content.</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">An item</li>
+                    <li class="list-group-item">A second item</li>
+                    <li class="list-group-item">A third item</li>
+                </ul>
+                <div class="card-body">
+                    <a href="#" class="card-link">Card link</a>
+                    <a href="#" class="card-link">Another link</a>
+                </div>
+            </div>
+
+            <div class="card m-3" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card’s content.</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">An item</li>
+                    <li class="list-group-item">A second item</li>
+                    <li class="list-group-item">A third item</li>
+                </ul>
+                <div class="card-body">
+                    <a href="#" class="card-link">Card link</a>
+                    <a href="#" class="card-link">Another link</a>
+                </div>
+            </div>
+
+            <div class="card m-3" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card’s content.</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">An item</li>
+                    <li class="list-group-item">A second item</li>
+                    <li class="list-group-item">A third item</li>
+                </ul>
+                <div class="card-body">
+                    <a href="#" class="card-link">Card link</a>
+                    <a href="#" class="card-link">Another link</a>
+                </div>
+            </div>
+
+            <div class="card m-3" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card’s content.</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">An item</li>
+                    <li class="list-group-item">A second item</li>
+                    <li class="list-group-item">A third item</li>
+                </ul>
+                <div class="card-body">
+                    <a href="#" class="card-link">Card link</a>
+                    <a href="#" class="card-link">Another link</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARRITO -->
+        <div class="mt-5">
+            <h3>Carrito</h3>
+            <div id="carrito" class="border p-3 rounded">
+                <p class="text-muted">El carrito está vacío</p>
+            </div>
+            <button class="btn btn-danger mt-3" id="vaciarCarrito">
+                Vaciar carrito
+            </button>
+    </section>
+
+    <footer class="bg-dark text-light mt-5 pt-4 pb-2">
+        <div class="container">
+            <div class="row">
+
+                <!-- Marca -->
+                <div class="col-md-4 mb-3">
+                    <h5>🖥 TechStore</h5>
+                    <p class="small">
+                        Ecommerce de periféricos para PC.
+                        Proyecto simulador con JavaScript.
+                    </p>
+                </div>
+
+                <!-- Enlaces -->
+                <div class="col-md-4 mb-3">
+                    <h5>Secciones</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-decoration-none text-light">Inicio</a></li>
+                        <li><a href="#" class="text-decoration-none text-light">Productos</a></li>
+                        <li><a href="#" class="text-decoration-none text-light">Carrito</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contacto -->
+                <div class="col-md-4 mb-3">
+                    <h5>Contacto</h5>
+                    <p class="small mb-1">Email: contacto@techstore.com</p>
+                    <p class="small">Tel: 099 123 456</p>
+                </div>
+
+            </div>
+
+            <hr class="border-light">
+
+            <div class="text-center small">
+                © 2026 TechStore - Simulador JS - Mathias Horvat
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
