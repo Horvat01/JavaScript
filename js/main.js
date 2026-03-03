@@ -58,4 +58,22 @@ const botonesEliminar = document.querySelectorAll(".eliminar");
 const carritoDiv = document.querySelectorAll(".carrito");
 const contadorCarrito = document.querySelectorAll(".contadorCarrito");
 const botonVaciar = document.querySelectorAll(".vaciarCarrito");
-console.log(botonesComprar)
+
+let carrito = JSON.parse (localStorage.getItem(".carrito")) || [];
+
+function actualizarCarrito() {
+    carritoDiv.innerHTML = "";
+
+    if (carrito.length === 0) {
+        carritoDiv.innerHTML = "<p>El carrito está vacío</p>";
+    } else {
+        carrito.forEach(producto => {
+            const p = document.createElement("p");
+            p.textContent = producto.nombre + " - $" + producto.precio;
+            carritoDiv.appendChild(p);
+        });
+    }
+
+    contadorCarrito.textContent =  carrito.length;
+    localStorage.setItem ("carrito", JSON.stringify(carrito));
+}
