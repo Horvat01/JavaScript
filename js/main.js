@@ -54,12 +54,11 @@
 
 // -SEGUNDA ENTREGA-
 const botonesComprar = document.querySelectorAll(".comprar");
-const botonesEliminar = document.querySelectorAll(".eliminar");
-const carritoDiv = document.querySelectorAll(".carrito");
-const contadorCarrito = document.querySelectorAll(".contadorCarrito");
-const botonVaciar = document.querySelectorAll(".vaciarCarrito");
+const carritoDiv = document.querySelector(".carrito");
+const contadorCarrito = document.querySelector(".contadorCarrito");
+const botonVaciar = document.querySelector(".vaciarCarrito");
 
-let carrito = JSON.parse (localStorage.getItem(".carrito")) || [];
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
 function actualizarCarrito() {
     carritoDiv.innerHTML = "";
@@ -74,18 +73,25 @@ function actualizarCarrito() {
         });
     }
 
-    contadorCarrito.textContent =  carrito.length;
-    localStorage.setItem ("carrito", JSON.stringify(carrito));
+    contadorCarrito.textContent = carrito.length;
+    localStorage.setItem("carrito", JSON.stringify(carrito));
 }
 
-botonesComprar.forEach( boton => {
-    boton.addEventListener ("click", () =>{
+botonesComprar.forEach(boton => {
+    boton.addEventListener("click", () => {
         const producto = {
             nombre: boton.dataset.nombre,
             precio: boton.dataset.precio
         };
 
-        carrito.push (producto);
+        carrito.push(producto);
         actualizarCarrito();
     });
 });
+
+botonVaciar.addEventListener("click", () => {
+    carrito = [];
+    actualizarCarrito();
+});
+
+actualizarCarrito();
