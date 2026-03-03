@@ -53,3 +53,9 @@
 // console.log(juegos.includes("fifa"));
 
 // -SEGUNDA ENTREGA-
+const botonesComprar = document.querySelectorAll(".comprar");
+const botonesEliminar = document.querySelectorAll(".eliminar");
+const carritoDiv = document.querySelectorAll(".carrito");
+const contadorCarrito = document.querySelectorAll(".contadorCarrito");
+const botonVaciar = document.querySelectorAll(".vaciarCarrito");
+console.log(botonesComprar)
