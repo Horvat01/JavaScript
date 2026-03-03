@@ -77,3 +77,15 @@ function actualizarCarrito() {
     contadorCarrito.textContent =  carrito.length;
     localStorage.setItem ("carrito", JSON.stringify(carrito));
 }
+
+botonesComprar.forEach( boton => {
+    boton.addEventListener ("click", () =>{
+        const producto = {
+            nombre: boton.dataset.nombre,
+            precio: boton.dataset.precio
+        };
+
+        carrito.push (producto);
+        actualizarCarrito();
+    });
+});
