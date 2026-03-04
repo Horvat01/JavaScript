@@ -67,11 +67,16 @@ function actualizarCarrito() {
 
     if (carrito.length === 0) {
         carritoDiv.innerHTML = "<p>El carrito está vacío</p>";
-        console.log("Carrito vacío");
+        totalDiv.textContent = "Total: $0"; // Reiniciar total
+        console.log("Carrito vacío - Total: $0");
     } else {
+        let total = 0; // Inicializamos total
         carrito.forEach((producto, index) => {
             const p = document.createElement("p");
             p.textContent = producto.nombre + " - $" + producto.precio;
+
+            // Sumamos el precio al total
+            total += producto.precio;
 
             // Botón para eliminar solo este producto
             const btnEliminar = document.createElement("button");
@@ -86,6 +91,10 @@ function actualizarCarrito() {
             p.appendChild(btnEliminar);
             carritoDiv.appendChild(p);
         });
+
+        // Mostramos el total
+        totalDiv.textContent = "Total: $" + total;
+        console.log("Total del carrito:", total);
     }
 
     contadorCarrito.textContent = carrito.length;
