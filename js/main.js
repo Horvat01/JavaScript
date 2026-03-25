@@ -176,3 +176,25 @@
 // ]
 
 const URL = "./db/data.json"
+
+function obtenerProductos() {
+    fetch(URL)
+        .then(data => response.json())
+        .then(data => {
+            renderProductos(data)
+        })
+        .catch(err => console.log("Error desconocido"))
+        .finally(() => console.log("finalizo la peticion"))
+}
+const productosContainer = document.getElementById("conenedorProductos")
+
+function renderProductos(listraProductos) {
+    listraProductos.forEach(productos => {
+        const card = document.createElement("div")
+        card.innerHTML = `<h2>Nombre: ${productos.id}</h2>
+                          <h3>Nombre: ${producto.nombre}</h2>
+                          <h4>Precio: ${producto.precio}</h2>`
+        productosContainer.appendChild(card)
+    })
+}
+obtenerProductos()
