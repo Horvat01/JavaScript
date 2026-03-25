@@ -1,0 +1,51 @@
+ [
+    {
+    "id": 1,
+        "nombre": "Mouse Gamer RGB",
+        "precio": 35
+
+    },
+    {
+        "id": 2,
+        "nombre": "Teclado Mecánico",
+        "precio": 70
+
+    },
+    {
+        "id": 3,
+        "nombre": "Auriculares Gamer 7.1",
+        "precio": 60
+
+    },
+    {
+        "id": 4,
+        "nombre": "Monitor Gamer 24",
+        "precio": 220
+
+    },
+    {
+        "id": 5,
+        "nombre": "Joystick PC",
+        "precio": 50
+
+    },
+    {
+        "id": 6,
+        "nombre": "Micrófono Condensador",
+        "precio": 45
+
+    },
+    {
+        "id": 7,
+        "nombre": "Mousepad Gamer XL",
+        "precio": 20
+
+    },
+
+    {
+        "id": 8,
+        "nombre": "Hub USB 3.0",
+        "precio": 30
+
+    }
+]
