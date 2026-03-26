@@ -3,7 +3,6 @@
         "id": 1,
         "nombre": "Mouse Gamer RGB Pro X",
         "precio": 35,
-        "descripcion": "Mouse gamer con luces RGB, 6 botones programables y sensor óptico.",
         "imagen": "./img/mouse.jpg"
 
     },
