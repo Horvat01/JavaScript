@@ -176,6 +176,10 @@
 // ]
 
 const URL = "./db/data.json"
+const productosContainer = document.getElementById("contenedorProductos")
+const carritoContainer = docuemnt.getElementById ("carrito")
+const totalCarrito = docuement.getElementById ("totalCarrito")
+const botonVaciar = docuement.getElementById ("vaciarCarrito")
 
 function obtenerProductos() {
     fetch(URL)
@@ -186,7 +190,6 @@ function obtenerProductos() {
         .catch(err => console.log("Error desconocido"))
         .finally(() => console.log("finalizo la peticion"))
 }
-const productosContainer = document.getElementById("contenedorProductos")
 
 function renderProductos(listraProductos) {
     listraProductos.forEach(producto => {
@@ -214,10 +217,20 @@ function renderProductos(listaProductos) {
                 <img src="${producto.imagen}" class= "card-img-top">
                 <h5 class="card-title">${producto.nombre}</h5>
                 <p class="card-text">Producto gamer de alta calidad</p>
-                <button class="btn btn-primary">Comprar</button>
+                <button class="btn btn-primary comprar">Comprar</button>
                 <button class="btn btn-success">$${producto.precio}</button>
             </div>
         `
+        const botonComprar = card.querySelector(".comprar")
+
+        // 👉 acá haces lo mismo que en tu imagen
+        botonComprar.dataset.id = producto.id
+
+        botonComprar.addEventListener("click", () => {
+            agregarAlCarrito(producto)
+        })
+
         productosContainer.appendChild(card)
     })
 }
+

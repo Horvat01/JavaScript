@@ -1,54 +1,61 @@
  [
     {
         "id": 1,
-        "nombre": "Mouse Gamer RGB",
+        "nombre": "Mouse Gamer RGB Pro X",
         "precio": 35,
+        "descripcion": "Mouse gamer con luces RGB, 6 botones programables y sensor óptico.",
         "imagen": "./img/mouse.jpg"
 
     },
     {
         "id": 2,
-        "nombre": "Teclado Mecánico",
+        "nombre": "Teclado Mecánico Switch Blue",
         "precio": 70,
         "imagen": "./img/teclado.jpg"
 
     },
     {
         "id": 3,
-        "nombre": "Auriculares Gamer 7.1",
+        "nombre": "Auriculares Gamer 7.1 Surround",
         "precio": 60,
         "imagen": "./img/auriculares.jpg"
 
     },
     {
         "id": 4,
-        "nombre": "Monitor Gamer 24",
-        "precio": 220
+        "nombre": "Monitor Gamer 24” 144Hz",
+        "precio": 220,
+        "imagen": "./img/monitor.jpg"
 
     },
     {
         "id": 5,
         "nombre": "Joystick PC",
-        "precio": 50
+        "precio": 50,
+        "imagen": "./img/joystick.jpg"
 
     },
     {
         "id": 6,
-        "nombre": "Micrófono Condensador",
-        "precio": 45
+        "nombre": "Micrófono Condensador USB",
+        "precio": 45,
+        "imagen": "./img/microfono.jpg"
 
     },
     {
         "id": 7,
         "nombre": "Mousepad Gamer XL",
-        "precio": 20
+        "precio": 20,
+        "imagen": "./img/mousepad.jpg"
+
 
     },
 
     {
         "id": 8,
         "nombre": "Hub USB 3.0",
-        "precio": 30
+        "precio": 30,
+        "imagen": "./img/hubb.jpeg"
 
     }
 ]
