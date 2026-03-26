@@ -2,19 +2,22 @@
     {
         "id": 1,
         "nombre": "Mouse Gamer RGB",
-        "precio": 35
+        "precio": 35,
+        "imagen": "./img/mouse.jpg"
 
     },
     {
         "id": 2,
         "nombre": "Teclado Mecánico",
-        "precio": 70
+        "precio": 70,
+        "imagen": "./img/teclado.jpg"
 
     },
     {
         "id": 3,
         "nombre": "Auriculares Gamer 7.1",
-        "precio": 60
+        "precio": 60,
+        "imagen": "./img/auriculares.jpg"
 
     },
     {

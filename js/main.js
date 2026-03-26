@@ -179,22 +179,45 @@ const URL = "./db/data.json"
 
 function obtenerProductos() {
     fetch(URL)
-        .then(data => response.json())
+        .then(response => response.json())
         .then(data => {
             renderProductos(data)
         })
         .catch(err => console.log("Error desconocido"))
         .finally(() => console.log("finalizo la peticion"))
 }
-const productosContainer = document.getElementById("conenedorProductos")
+const productosContainer = document.getElementById("contenedorProductos")
 
 function renderProductos(listraProductos) {
-    listraProductos.forEach(productos => {
+    listraProductos.forEach(producto => {
         const card = document.createElement("div")
-        card.innerHTML = `<h2>Nombre: ${productos.id}</h2>
-                          <h3>Nombre: ${producto.nombre}</h2>
-                          <h4>Precio: ${producto.precio}</h2>`
+        card.innerHTML = `
+        <h2>Nombre: ${producto.id}</h2>
+        <h3>Nombre: ${producto.nombre}</h3>
+        <h4>Precio: ${producto.precio}</h4>
+        `
         productosContainer.appendChild(card)
     })
 }
 obtenerProductos()
+
+function renderProductos(listaProductos) {
+    productosContainer.innerHTML = ""
+
+    listaProductos.forEach(producto => {
+        const card = document.createElement("div")
+        card.className = "card m-3"
+        card.style.width = "18rem"
+
+        card.innerHTML = `
+            <div class="card-body">
+                <img src="${producto.imagen}" class= "card-img-top">
+                <h5 class="card-title">${producto.nombre}</h5>
+                <p class="card-text">Producto gamer de alta calidad</p>
+                <button class="btn btn-primary">Comprar</button>
+                <button class="btn btn-success">$${producto.precio}</button>
+            </div>
+        `
+        productosContainer.appendChild(card)
+    })
+}
