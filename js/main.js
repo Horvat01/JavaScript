@@ -343,9 +343,9 @@ botonPagar.onclick = function () {
         });
     }
   
-    carrito = [];
-    localStorage.removeItem("carrito");
-    renderCarrito()
+    // carrito = [];
+    // localStorage.removeItem("carrito");
+    // renderCarrito()
 }
 
 Toastify({
