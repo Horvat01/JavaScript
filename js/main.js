@@ -197,7 +197,7 @@ function obtenerProductos() {
         .catch(err => console.log("Error desconocido"))
         .finally(() => console.log("finalizo la peticion"))
 }
-
+// Prueba de json
 // function renderProductos(listraProductos) {
 //     listraProductos.forEach(producto => {
 //         const card = document.createElement("div")
@@ -224,7 +224,7 @@ function renderProductos(listaProductos) {
                 <img src="${producto.imagen}" class= "card-img-top">
                 <h5 class="card-title">${producto.nombre}</h5>
                 <p class="card-text">Producto gamer de alta calidad</p>
-                <button class="btn btn-primary comprar">Comprar</button>
+                <button class="btn btn-primary comprar">Añadir al carrito</button>
                 <button class="btn btn-success">$${producto.precio}</button>
             </div>
         `
@@ -362,7 +362,7 @@ Toastify({
   onClick: function(){} // Callback after click
 }).showToast();
 
-
+// pruebas fallidas 
 // function agregarAlCarrito (producto){
 //     carrito.push(producto)
 //     localStorage.setItem("carrito", JSON.stringify(carrito))

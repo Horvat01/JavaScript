@@ -1,7 +1,7 @@
-let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 const URL = "./db/data.json"
 const listaResumen = document.getElementById("resumenCompra");
 
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 let listaHtml = "";
 let totalFinal = 0;
 
