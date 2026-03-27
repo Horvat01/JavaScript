@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GameShop/Pagos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- css -->
+    <link rel="stylesheet" href="./estilos/styles.css">
+    <!-- js -->
+    <script src="./js/main.js" defer></script>
+    <!-- toastify -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-dark px-3">
+        <a class="navbar-brand mb-0 h1" href="../index.html">GameShop</a>
+        <button class="btn btn-success " id="verCarrito">
+            Carrito 🛒 (<span id="contadorCarrito">0</span>)
+        </button>
+    </nav>
+
+<div class="container pb-5 mt-5">
+        <div class="row g-5">
+            
+            <div class="col-md-7 col-lg-8">
+                <h4 class="mb-3">Datos de Envío y Pago</h4>
+                <form id="formPago">
+                    <div class="row g-3">
+                        <div class="col-sm-6">
+                            <label class="form-label">Nombre</label>
+                            <input type="text" class="form-control" placeholder="Juan" required>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label class="form-label">Apellido</label>
+                            <input type="text" class="form-control" placeholder="Pérez" required>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" placeholder="usuario@ejemplo.com" required>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label">Dirección de entrega</label>
+                            <input type="text" class="form-control" placeholder="Calle Falsa 123" required>
+                        </div>
+                    </div>
+
+                    <hr class="my-4">
+
+                    <h4 class="mb-3">Tarjeta de Crédito / Débito</h4>
+                    <div class="row gy-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Número de tarjeta</label>
+                            <input type="text" class="form-control" placeholder="0000 0000 0000 0000" required>
+                        </div>
+
+                        <div class="col-md-3">
+                            <label class="form-label">Vencimiento</label>
+                            <input type="text" class="form-control" placeholder="MM/YY" required>
+                        </div>
+
+                        <div class="col-md-3">
+                            <label class="form-label">CVV</label>
+                            <input type="text" class="form-control" placeholder="123" required>
+                        </div>
+                    </div>
+
+                    <hr class="my-4">
+                    <button class="w-100 btn btn-primary btn-lg" type="submit">Confirmar Pago</button>
+                </form>
+            </div>
+
+            <div class="col-md-5 col-lg-4">
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="text-primary">Tu pedido</span>
+                </h4>
+                <ul class="list-group mb-3" id="resumenCompra">
+                    <li class="list-group-item d-flex justify-content-between lh-sm">
+                        <div>
+                            <h6 class="my-0">Productos Gamer</h6>
+                            <small class="text-muted">Resumen del carrito</small>
+                        </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between bg-light">
+                        <div class="text-success">
+                            <h6 class="my-0">Envío</h6>
+                            <small>Bonificado</small>
+                        </div>
+                        <span class="text-success">$0</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span>Total (USS)</span>
+                        <strong id="totalPago">$0</strong>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="bg-dark text-light mt-5 pt-4 pb-2">
+        <div class="container">
+            <div class="row">
+
+                <!-- Marca -->
+                <div class="col-md-4 mb-3">
+                    <h5>GameShop</h5>
+                    <p class="small">
+                        Ecommerce de periféricos para PC.
+                        Proyecto simulador con JavaScript.
+                    </p>
+                </div>
+
+                <!-- Enlaces -->
+                <div class="col-md-4 mb-3">
+                    <h5>Secciones</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-decoration-none text-light">Inicio</a></li>
+                        <li><a href="#" class="text-decoration-none text-light">Productos</a></li>
+                        <li><a href="#" class="text-decoration-none text-light">Carrito</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contacto -->
+                <div class="col-md-4 mb-3">
+                    <h5>Contacto</h5>
+                    <p class="small mb-1">Email: contacto@gameshop.com</p>
+                    <p class="small">Tel: 099 123 456</p>
+                </div>
+
+            </div>
+
+            <hr class="border-light">
+
+            <div class="text-center small">
+                © 2026 TechStore - Simulador JS - Mathias Horvat
+            </div>
+        </div>
+    </footer>
+    <!-- toastify -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <!-- sweetalert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- boostrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

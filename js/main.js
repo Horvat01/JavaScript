@@ -325,11 +325,24 @@ botonPagar.onclick = function () {
         })
         totalCarrito.textContent = "Total $" + subtotal
         Swal.fire({
-            title: "Compra realizada!",
+            title: "Continuar con la compra?",
             icon: "success",
-            draggable: true
+            draggable: true,
+            confirmButtonText: "Ir a pagar", 
+            showCancelButton: true,         
+            cancelButtonText: "Seguir viendo"
+            }).then(function (result) {
+            
+            if (result.isConfirmed) {
+                
+                window.location.href = "../paginas/pagos.html"; 
+            } else {
+            
+                console.log("El usuario decidió quedarse en la tienda");
+            }
         });
     }
+  
     carrito = [];
     localStorage.removeItem("carrito");
     renderCarrito()
