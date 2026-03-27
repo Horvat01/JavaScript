@@ -1,5 +1,6 @@
 const URL = "./db/data.json"
 const listaResumen = document.getElementById("resumenCompra");
+const formulario = document.getElementById("formFinal");
 
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 let listaHtml = "";
@@ -21,6 +22,19 @@ listaHtml = listaHtml + `
         <strong>$${totalFinal}</strong>
     </li>
 `;
+formulario.onsubmit = function (event) {
+
+    event.preventDefault();
+    const nombreCliente = document.getElementById("nombre").value;
+
+    Swal.fire({
+        title: `¡Gracias por tu compra, ${nombreCliente}!`,
+        text: "Tu pedido de GameShop ha sido procesado con éxito.",
+        icon: "success",
+        confirmButtonText: "Volver a la tienda",
+        confirmButtonColor: "#166110"
+    })
+}
 
 listaResumen.innerHTML = listaHtml;
 console.log("El carrito detectado es:", carrito);

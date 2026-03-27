@@ -16,14 +16,13 @@
 </head>
 
 <body class="bodypagos">
-    <nav class="navbar navbar-dark bg-dark px-3">
-        <a class="navbar-brand mb-0 h1" href="../index.html">GameShop</a>
-        <button class="btn btn-success " id="verCarrito">
-            Carrito 🛒 (<span id="contadorCarrito">0</span>)
-        </button>
+
+    <nav class="navbar navbar-dark bg-dark px-3 navbarActiva">
+        <a class="navbar-brand mb-0 h1" aria-current="page" href="../index.html">GameShop</a>
+        <a class="navbar-brand mb-0 h1 active"> Pagos</a>
     </nav>
 
-    <div class="containerpagos">
+    <div class="containerpagos m-4">
         <div class="row">
             <div class="col-12 mb-4">
                 <h1 class="mt-3">Finalizar mi compra</h1>
@@ -82,7 +81,8 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary btn-lg w-100 mt-3">CONFIRMAR PAGO</button>
+                        <button type="submit" class="btn btn-primary btn-lg w-100 mt-3 confirmarPago">CONFIRMAR
+                            PAGO</button>
                     </form>
                 </div>
             </div>
@@ -134,7 +134,7 @@
             <hr class="border-light">
 
             <div class="text-center small">
-                © 2026 TechStore - Simulador JS - Mathias Horvat
+                © 2026 GameShop - Simulador JS - Mathias Horvat
             </div>
         </div>
     </footer>
