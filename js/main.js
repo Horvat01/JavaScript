@@ -181,6 +181,7 @@ const productosContainer = document.getElementById("contenedorProductos")
 const carritoContainer = document.getElementById("carrito")
 const totalCarrito = document.getElementById("totalCarrito")
 const botonVaciar = document.getElementById("vaciarCarrito")
+const botonPagar = document.getElementById("comprarCarrito")
 
 let carrito = JSON.parse(localStorage.getItem("carrito")) || []
 
@@ -308,7 +309,31 @@ botonVaciar.onclick = function () {
     localStorage.removeItem("carrito")
     renderCarrito()
 }
+botonPagar.onclick = function () {
+    if (carrito.length === 0) {
+        Swal.fire({
+            icon: "error",
+            title: "No Agregaste nada al carrito",
+            text: "Vuelve a intentarlo!",
+        });
+    }
+    else {
+        let subtotal = 0
 
+        carrito.forEach(function (p) {
+            subtotal = subtotal + (p.precio * p.cantidad)
+        })
+        totalCarrito.textContent = "Total $" + subtotal
+        Swal.fire({
+            title: "Compra realizada!",
+            icon: "success",
+            draggable: true
+        });
+    }
+    carrito = [];
+    localStorage.removeItem("carrito");
+    renderCarrito()
+}
 // function agregarAlCarrito (producto){
 //     carrito.push(producto)
 //     localStorage.setItem("carrito", JSON.stringify(carrito))
