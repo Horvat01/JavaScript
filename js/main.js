@@ -334,6 +334,22 @@ botonPagar.onclick = function () {
     localStorage.removeItem("carrito");
     renderCarrito()
 }
+
+Toastify({
+  text: "Bienvenidos a GameShop",
+  duration: 3000,
+  destination: "#",
+  close: true,
+  gravity: "top", // `top` or `bottom`
+  position: "center", // `left`, `center` or `right`
+  stopOnFocus: false, // Prevents dismissing of toast on hover
+  style: {
+    background: "linear-gradient(to right, #110401",
+  },
+  onClick: function(){} // Callback after click
+}).showToast();
+
+
 // function agregarAlCarrito (producto){
 //     carrito.push(producto)
 //     localStorage.setItem("carrito", JSON.stringify(carrito))
