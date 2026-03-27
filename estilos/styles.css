@@ -7,13 +7,17 @@
 body{
     background-color: rgb(248, 248, 248);
 }
+.bodypagos{
+    background-color:rgb(248, 248, 248);
+}
 .textos{
     text-align: center;
 }
 
 .carritoo{
-    background-color: rgba(3, 3, 3, 0.096);
-    border: 0.rem solid black;
+    background-color: rgba(3, 3, 3, 0.034);
+    border: 2px solid #333; 
+    border-radius: 15px;
     padding: 1rem;
     margin: 1rem;
 }
