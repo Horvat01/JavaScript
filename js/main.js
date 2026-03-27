@@ -184,8 +184,8 @@ const botonVaciar = document.getElementById("vaciarCarrito")
 
 let carrito = JSON.parse(localStorage.getItem("carrito")) || []
 
-// obtenerProductos()
-// renderCarrito()
+obtenerProductos()
+renderCarrito()
 
 function obtenerProductos() {
     fetch(URL)
