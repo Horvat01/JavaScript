@@ -1,53 +1,42 @@
-const URL = "./db/data.json"
-const productosContainer = document.getElementById("contenedorProductos")
-const carritoContainer = document.getElementById("carrito")
-const totalCarrito = document.getElementById("totalCarrito")
-const botonVaciar = document.getElementById("vaciarCarrito")
-const botonPagar = document.getElementById("comprarCarrito")
+const URL = "./db/data.json";
+const productosContainer = document.getElementById("contenedorProductos");
+const carritoContainer = document.getElementById("carrito");
+const totalCarrito = document.getElementById("totalCarrito");
+const botonVaciar = document.getElementById("vaciarCarrito");
+const botonPagar = document.getElementById("comprarCarrito");
 
-let carrito = JSON.parse(localStorage.getItem("carrito")) || []
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-obtenerProductos()
-renderCarrito()
-
-// fetch unico 
+// Función principal con Arrow Function
 const obtenerProductos = () => {
     fetch(URL)
-        .then(res => res.json())
+        .then(response => response.json())
         .then(data => renderProductos(data))
-        .catch(() => console.log("Error al cargar productos"))
-}
+        .catch(() => console.error("Error al cargar productos"));
+};
 
-obtenerProductos()
-renderCarrito()
-
-function renderProductos(listaProductos) {
-    productosContainer.innerHTML = ""
-
-    listaProductos.forEach(producto => {
-        const card = document.createElement("div")
-        card.className = "card m-3"
-        card.style.width = "18rem"
-
+const renderProductos = (lista) => {
+    productosContainer.innerHTML = "";
+    lista.forEach(prod => {
+        const card = document.createElement("div");
+        card.className = "card m-3";
+        card.style.width = "18rem";
         card.innerHTML = `
             <div class="card-body">
-                <img src="${producto.imagen}" class= "card-img-top">
-                <h5 class="card-title">${producto.nombre}</h5>
-                <p class="card-text">Producto gamer de alta calidad</p>
-                <button class="btn btn-primary comprar">Añadir al carrito</button>
-                <button class="btn btn-success">$${producto.precio}</button>
-            </div>
-        `
-        // BOTON COMRAR
-        const botonComprar = card.querySelector(".comprar")
+                <img src="${prod.imagen}" class="card-img-top" alt="${prod.nombre}">
+                <h5 class="card-title">${prod.nombre}</h5>
+                <p class="card-text">Calidad Gamer Profesional</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <span class="fw-bold">$${prod.precio}</span>
+                    <button class="btn btn-primary btn-sm btn-agregar" data-id="${prod.id}">Añadir</button>
+                </div>
+            </div>`;
 
-        botonComprar.onclick = () => {
-            agregarAlCarrito(producto);
-        };
+        card.querySelector(".btn-agregar").onclick = () => agregarAlCarrito(prod);
+        productosContainer.appendChild(card);
+    });
+};
 
-        productosContainer.appendChild(card)
-    })
-}
 // CARRITO
 function agregarAlCarrito(producto) {
 
