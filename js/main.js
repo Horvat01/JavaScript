@@ -52,7 +52,7 @@ const agregarAlCarrito = (producto) => {
         duration: 2000,
         gravity: "bottom",
         position: "right",
-        style: { background: "linear-gradient(to right, #00b09b, #96c93d)" }
+        style: { background: "linear-gradient(to right, #110401" }
     }).showToast();
 
     guardarYRenderizar();
