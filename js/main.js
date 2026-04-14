@@ -7,7 +7,7 @@ const botonPagar = document.getElementById("comprarCarrito");
 
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-// Función principal con Arrow Function
+// funcion principal
 const obtenerProductos = () => {
     fetch(URL)
         .then(response => response.json())
@@ -46,7 +46,7 @@ const agregarAlCarrito = (producto) => {
         carrito.push({ ...producto, cantidad: 1 });
     }
 
-    // Alerta de producto 
+    // alerta de producto 
     Toastify({
         text: `${producto.nombre} agregado`,
         duration: 2000,
@@ -87,7 +87,7 @@ const renderCarrito = () => {
     actualizarTotal();
 };
 
-// Uso de REDUCE para el total 
+// REDUCE para el total 
 const actualizarTotal = () => {
     const total = carrito.reduce((acc, prod) => acc + (prod.precio * prod.cantidad), 0);
     totalCarrito.textContent = `Total: $${total}`;
