@@ -37,124 +37,108 @@ const renderProductos = (lista) => {
     });
 };
 
-// CARRITO
-function agregarAlCarrito(producto) {
-
-    const existe = carrito.find(function (item) {
-        return item.id === producto.id
-    })
+const agregarAlCarrito = (producto) => {
+    const existe = carrito.find(item => item.id === producto.id);
 
     if (existe) {
-        console.log("Sumando" + producto.nombre);
-        existe.cantidad = existe.cantidad + 1
+        existe.cantidad++;
     } else {
-        console.log("Agregando" + producto.nombre);
-
-        producto.cantidad = 1
-        carrito.push(producto)
+        carrito.push({ ...producto, cantidad: 1 });
     }
 
-    localStorage.setItem("carrito", JSON.stringify(carrito))
-    renderCarrito()
-}
+    // Alerta de producto 
+    Toastify({
+        text: `${producto.nombre} agregado`,
+        duration: 2000,
+        gravity: "bottom",
+        position: "right",
+        style: { background: "linear-gradient(to right, #00b09b, #96c93d)" }
+    }).showToast();
 
-// SUMAR PRODUCTOS EN EL CARRITO
-function renderCarrito() {
-    carritoContainer.innerHTML = ""
+    guardarYRenderizar();
+};
+
+const renderCarrito = () => {
+    carritoContainer.innerHTML = "";
 
     if (carrito.length === 0) {
-        carritoContainer.innerHTML = "<p>El carrito esta vacio</p>"
-        totalCarrito.textContent = "Total $0"
-        return
+        carritoContainer.innerHTML = "<p class='text-center'>El carrito está vacío</p>";
+        totalCarrito.textContent = "Total: $0";
+        return;
     }
 
-    carrito.forEach(function (prod, index) {
-        const item = document.createElement("div")
-        item.className = "d-flex justify-content-between mb-2 border-bottom pb-1"
-
+    carrito.forEach(prod => {
+        const item = document.createElement("div");
+        item.className = "d-flex justify-content-between align-items-center mb-3 border-bottom pb-2";
         item.innerHTML = `
-            <span>${prod.nombre} (x${prod.cantidad}) - $${prod.precio * prod.cantidad}</span>
-            <button class="btn btn-danger btn-sm" onclick="eliminarDelCarrito(${index})">Eliminar</button>
-        `
-        carritoContainer.appendChild(item)
-    })
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">${prod.nombre}</div>
+                $${prod.precio} x ${prod.cantidad}
+            </div>
+            <div class="btn-group mx-2">
+                <button class="btn btn-outline-secondary btn-sm" onclick="cambiarCantidad(${prod.id}, -1)">-</button>
+                <button class="btn btn-outline-secondary btn-sm" onclick="cambiarCantidad(${prod.id}, 1)">+</button>
+            </div>
+            <button class="btn btn-danger btn-sm" onclick="eliminarProducto(${prod.id})">🗑</button>
+        `;
+        carritoContainer.appendChild(item);
+    });
 
+    actualizarTotal();
+};
 
-    sumarTodo()
-}
+// Uso de REDUCE para el total 
+const actualizarTotal = () => {
+    const total = carrito.reduce((acc, prod) => acc + (prod.precio * prod.cantidad), 0);
+    totalCarrito.textContent = `Total: $${total}`;
+};
 
-function sumarTodo() {
-    let subtotal = 0
-
-    carrito.forEach(function (p) {
-        subtotal = subtotal + (p.precio * p.cantidad)
-    })
-    totalCarrito.textContent = "Total $" + subtotal
-}
-
-window.eliminarDelCarrito = function (index) {
-    if (carrito[index].cantidad > 1) {
-        carrito[index].cantidad = carrito[index].cantidad - 1
-    } else {
-        carrito.splice(index, 1)
+window.cambiarCantidad = (id, cambio) => {
+    const prod = carrito.find(item => item.id === id);
+    if (prod) {
+        prod.cantidad += cambio;
+        if (prod.cantidad < 1) eliminarProducto(id);
+        else guardarYRenderizar();
     }
+};
 
-    localStorage.setItem("carrito", JSON.stringify(carrito))
-    renderCarrito()
-}
-botonVaciar.onclick = function () {
-    console.log("Vaciando todo.");
-    carrito = []
-    localStorage.removeItem("carrito")
-    renderCarrito()
-}
-botonPagar.onclick = function () {
+window.eliminarProducto = (id) => {
+    carrito = carrito.filter(item => item.id !== id);
+    guardarYRenderizar();
+};
+
+const guardarYRenderizar = () => {
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    renderCarrito();
+};
+
+botonVaciar.onclick = () => {
+    carrito = [];
+    guardarYRenderizar();
+};
+
+botonPagar.onclick = () => {
     if (carrito.length === 0) {
-        Swal.fire({
-            icon: "error",
-            title: "No Agregaste nada al carrito",
-            text: "Vuelve a intentarlo!",
-        });
+        Swal.fire("Carrito vacío", "Agregá productos antes de pagar", "error");
+    } else {
+        window.location.href = "./paginas/pagos.html";
     }
-    else {
-        let subtotal = 0
+};
 
-        carrito.forEach(function (p) {
-            subtotal = subtotal + (p.precio * p.cantidad)
-        })
-        totalCarrito.textContent = "Total $" + subtotal
-        Swal.fire({
-            title: "Continuar con la compra?",
-            icon: "success",
-            draggable: true,
-            confirmButtonText: "Ir a pagar", 
-            showCancelButton: true,         
-            cancelButtonText: "Seguir viendo"
-            }).then(function (result) {
-            
-            if (result.isConfirmed) {
-                
-                window.location.href = "../paginas/pagos.html"; 
-            } else {
-            
-                console.log("El usuario decidió quedarse en la tienda");
-            }
-        });
-    }
-  
-}
+// Inicio de la app
+obtenerProductos();
+renderCarrito();
 
 Toastify({
-  text: "Bienvenidos a GameShop",
-  duration: 3000,
-  destination: "#",
-  close: true,
-  gravity: "top", // `top` or `bottom`
-  position: "center", // `left`, `center` or `right`
-  stopOnFocus: false, // Prevents dismissing of toast on hover
-  style: {
-    background: "linear-gradient(to right, #110401",
-  },
-  onClick: function(){} // Callback after click
+    text: "Bienvenidos a GameShop",
+    duration: 3000,
+    destination: "#",
+    close: true,
+    gravity: "top", // `top` or `bottom`
+    position: "center", // `left`, `center` or `right`
+    stopOnFocus: false, // Prevents dismissing of toast on hover
+    style: {
+        background: "linear-gradient(to right, #110401",
+    },
+    onClick: function () { } // Callback after click
 }).showToast();
-
