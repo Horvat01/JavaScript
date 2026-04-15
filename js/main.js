@@ -7,7 +7,7 @@ const botonPagar = document.getElementById("comprarCarrito");
 
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-// funcion principal
+// Productos desde el JSON
 const obtenerProductos = () => {
     fetch(URL)
         .then(response => response.json())
@@ -15,6 +15,7 @@ const obtenerProductos = () => {
         .catch(() => console.error("Error al cargar productos"));
 };
 
+// Lista de productos
 const renderProductos = (lista) => {
     productosContainer.innerHTML = "";
     lista.forEach(prod => {
@@ -52,12 +53,13 @@ const agregarAlCarrito = (producto) => {
         duration: 2000,
         gravity: "bottom",
         position: "right",
-        style: { background: "linear-gradient(to right, #110401" }
+        style: { background: "linear-gradient(to right, #110401, #4b0d02)" }
     }).showToast();
 
     guardarYRenderizar();
 };
 
+// Sumas los productos al carrito
 const renderCarrito = () => {
     carritoContainer.innerHTML = "";
 
@@ -79,7 +81,7 @@ const renderCarrito = () => {
                 <button class="btn btn-outline-secondary btn-sm" onclick="cambiarCantidad(${prod.id}, -1)">-</button>
                 <button class="btn btn-outline-secondary btn-sm" onclick="cambiarCantidad(${prod.id}, 1)">+</button>
             </div>
-            <button class="btn btn-danger btn-sm" onclick="eliminarProducto(${prod.id})">🗑</button>
+            <button class="btn btn-danger btn-sm" onclick="eliminarProducto(${prod.id})">X</button>
         `;
         carritoContainer.appendChild(item);
     });
@@ -129,6 +131,7 @@ botonPagar.onclick = () => {
 obtenerProductos();
 renderCarrito();
 
+// Bienvenida de la pagina
 Toastify({
     text: "Bienvenidos a GameShop",
     duration: 3000,

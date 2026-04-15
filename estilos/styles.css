@@ -21,3 +21,20 @@ body{
     padding: 1rem;
     margin: 1rem;
 }
+
+.resumen-caja {
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 20px;
+    background-color: #fff;
+}
+.btn-group .btn-outline-secondary {
+    font-weight: bold;
+    padding: 2px 10px;
+}
+
+.card-img-top{
+    height: 200px;
+    object-fit: contain;
+    padding: 10px;
+}
